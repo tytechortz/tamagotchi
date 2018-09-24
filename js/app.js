@@ -8,6 +8,8 @@ class Bison {
     }
 }
 
+// instantiate class
 
+const tatanka = new Bison( 0, 0, 0, 0, 'tatanka');
 
 
