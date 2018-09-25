@@ -30,20 +30,11 @@ for( var key in tatanka) {
     $article.append($span);
     $body.append($article);
 }
+$("#1").remove();
 
 };
 
-// const $body = $('body');
-// const $section = $('<section id="stats">STATS');
 
-// $body.append($section);
-// console.log(tatanka);
-// for( var key in tatanka) {
-//     const $article = $("<article/>");
-//     $section.append($article);
-//     const $h3 = $("<h3/>").text(key + " = " + tatanka[key]);
-//     $article.append($h3);
-// }
 
 // $('button').on('click', () => {
 //     const $input = $('input').val();
@@ -58,6 +49,9 @@ for( var key in tatanka) {
 //     $section.append($h1);
 
 //  }
+
 $(() => {
     $('#1').on('click', startGame);
+    
 });
+
