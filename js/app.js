@@ -4,13 +4,12 @@ class Bison {
         this.sleepiness = 0;
         this.boredom = 0;
         this.age = 0;
-        this.name = name;
     }
 }
 
 // instantiate class
 
-const tatanka = new Bison( 0, 0, 0, 0, 'Tatanka');
+const tatanka = new Bison( 0, 0, 0, 0);
 
 const $body = $('body');
 const $section = $('<section id="stats">STATS');
@@ -22,4 +21,19 @@ for( var key in tatanka) {
     $section.append($article);
     const $h3 = $("<h3/>").text(key + " = " + tatanka[key]);
     $article.append($h3);
+}
+
+$('button').on('click', () => {
+    const $input = $('input').val();
+    console.log($input);
+    createName($input);
+});
+
+const createName = (inputVal) => {
+    const $div = $('<div/>').addClass('name');
+    const $h1 = $('<h1/>').text(inputVal + " The Bison");
+    $section.append($h1);
+
+
+    
 }
