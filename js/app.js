@@ -12,36 +12,26 @@ class Bison {
 const tatanka = new Bison( 0, 0, 0, 0);
 
 //start game button
+const $body = $('body');
+
 const startGame = () => {
 console.log('make start button');
-
-
-
 //$body.append(<IMG SRC="idle_bison.gif"></IMG>);
 
 const $body = $('body');
-const $div = $('<div id="stats">STATS');
 const $section = $('<section/>').prepend('<IMG SRC="idle_bison.gif"></IMG>');
 $body.append($section);
 
 console.log(tatanka);
 
-$body.append($div);
-
 for( var key in tatanka) {
-const $article = $("<div/>");
-$div.append($article);
-const $h3 = $("<h3/>").text(key + " = " + tatanka[key]);
-$article.append($h3);
+    const $span = $("<span/>").attr('class', key).text(key + " = " + tatanka[key]);
+    const $article = $("<article/>");
+    $article.append($span);
+    $body.append($article);
 }
 
-
-
-
 };
-
-
-
 
 // const $body = $('body');
 // const $section = $('<section id="stats">STATS');
