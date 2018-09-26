@@ -1,70 +1,89 @@
+let time = 0;
+
+
 class Bison {
-    constructor() {
+    constructor(name) {
+        this.name = name;
         this.hunger = 1;
         this.sleepiness = 1;
         this.boredom = 1;
         this.age = 1;
     }
     
-    }
+}
 
 // instantiate class
 
-let tatanka = new Bison();
+const tatanka = new Bison();
+console.log(tatanka)
+
+
+const $body = $('body');
 
 //start game button
 const startGame = () => {
-const $body = $('body');
-const $section = $('<section/>').prepend('<IMG SRC="idle_bison.gif"></IMG>');
-$body.append($section);
 
+   
 $("#1").remove();
 
-let time = 0;
-function countUp() {
+
+const countUp = () => {
     time++;
-    $(".age").html("");
-    $(".age").append(time);
-    $(".hunger").html("");
-    $(".hunger").append((time / 10) + tatanka.hunger)
-    $(".boredom").html("");
-    $(".boredom").append((time / 20) + tatanka.boredom);
-    $(".sleepiness").html("");
-    $(".sleepiness").append((time / 50) + tatanka.sleepiness);
-        
-    
+    if (time% 10 === 0) {
+        tatanka.hunger++;
+         $(".hunger").html("");
+         $(".hunger").append(tatanka.hunger);
+    }
+    if (time% 11 === 0) {
+        tatanka.boredom++;
+        $(".boredom").html("");
+        $(".boredom").append(tatanka.boredom);
+    }
+    if (time% 12 === 0) {
+        tatanka.sleepiness++;
+        $(".sleepiness").html("");
+        $(".sleepiness").append(tatanka.sleepiness);
+    }
+    if (time%2 === 0) {
+        tatanka.age++;
+        $(".age").html("");
+        $(".age").append(tatanka.age);
+    }
 }
 setInterval(countUp, 1000);
+       
+const morph = () => {
+    if(tatanka.tiredness <= 7 || tatanka.hunger <= 7 || tatanka.boredom <= 7) {
+        $('#idle').attr('src', "running_bison.gif")
+    }
+    if(tatanka.tiredness > 7 || tatanka.hunger > 7 || tatanka.boredom > 7)  {
+        $('#idle').attr('src', "idle_bison.gif");
+    }
+}
+setInterval(morph, 6000);
+}
 
 
-};
+
 
 $(document).on('click', ".feed", function(){
     tatanka.hunger--;
-    console.log(`click worked ${tatanka.hunger}`);
-    $(".hunger").html("");
-    $(".hunger").append(tatanka.hunger);
-    $(".boredom").html("");
-    $(".boredom").append(tatanka.hunger);
-    $(".sleepiness").html("");
-    $(".sleepiness").append(tatanka.hunger);
-
+    //console.log(`click worked ${tatanka.hunger}`);
+    
 })
-
-
-
-
 
 $(document).on('click', ".rest", function(){
     tatanka.sleepiness--;
-    console.log(`click worked ${tatanka.sleepiness}`);
-    $('.sleepiness').append(tatanka.sleepiness);
+    //console.log(`click worked ${tatanka.sleepiness}`);
+    //$('.sleepiness').append(tatanka.sleepiness);
+    
 })
 
 $(document).on('click', ".play", function(){
     tatanka.boredom--;
-    console.log(`click worked ${tatanka.boredom}`);
-    $('.boredom').append(tatanka.boredom);
+    //console.log(`click worked ${tatanka.boredom}`);
+    //$('.boredom').append(tatanka.boredom);
+    
 })
 
 
@@ -72,7 +91,6 @@ $(document).on('click', ".play", function(){
 $(() => {
     $('#1').on('click', startGame);
 });
-
 
 
 
@@ -112,13 +130,7 @@ $(() => {
 // const $div = $('<div/>');
 // $body.append($div);
 
-// //create buttons
-// const $feedButton = $('<button>/').text('Feed the Bison').on('click', () => {
-//     console.log('click works');
-//     tatanka.hunger++;
-//     console.log(tatanka.hunger);
-// });
-// $div.append($feedButton); 
+
 
 // const $sleepButton = $('<button>/').text('Let the Bison Chill');
 // $div.append($sleepButton);
@@ -132,4 +144,19 @@ $(() => {
 //     $('#1').on('click', startGame);
 // });
 
+//  $('button').on('click', () => {
+//         const $input = $('input').val();
+//         console.log($input);
+//         createName($input);
+    
+//     $("#nameBison").remove();
+//     });
+    
+    // const createName = (inputVal) => {
+    //     .Bison.name.append(createName);
 
+    //     // const $div = $('<div/>').addClass('name');
+    //     // const $h3 = $('<h3/>').text(inputVal + " The Bison");
+    //     // $div.append($h3);
+    //     // $body.append($div);
+    // }
