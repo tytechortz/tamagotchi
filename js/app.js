@@ -29,17 +29,17 @@ $("#1").remove();
 
 const countUp = () => {
     time++;
-    if (time% 10 === 0) {
+    if (time% 1 === 0) {
         tatanka.hunger++;
          $(".hunger").html("");
          $(".hunger").append(tatanka.hunger);
     }
-    if (time% 11 === 0) {
+    if (time% 1 === 0) {
         tatanka.boredom++;
         $(".boredom").html("");
         $(".boredom").append(tatanka.boredom);
     }
-    if (time% 12 === 0) {
+    if (time% 1 === 0) {
         tatanka.sleepiness++;
         $(".sleepiness").html("");
         $(".sleepiness").append(tatanka.sleepiness);
@@ -49,25 +49,42 @@ const countUp = () => {
         $(".age").html("");
         $(".age").append(tatanka.age);
     }
+    if(tatanka.tiredness > 30 || tatanka.hunger > 30 || tatanka.boredom > 30) {
+        death();    
+        } else {
+            console.log("STILL ALIVE")
+        }
 }
 setInterval(countUp, 1000);
        
 const morph = () => {
-    if(tatanka.tiredness <= 7 || tatanka.hunger <= 7 || tatanka.boredom <= 7) {
+    if(tatanka.tiredness <= 10 && tatanka.hunger <= 10 && tatanka.boredom <= 10) {
         $('#idle').attr('src', "running_bison.gif")
     }
-    if(tatanka.tiredness > 7 || tatanka.hunger > 7 || tatanka.boredom > 7)  {
+    if(tatanka.tiredness > 10 || tatanka.hunger > 10 || tatanka.boredom > 10)  {
+        $('#idle').attr('src', "walking_bison.gif");
+    }
+    if(tatanka.tiredness > 20 || tatanka.hunger > 20 || tatanka.boredom > 20)  {
         $('#idle').attr('src', "idle_bison.gif");
     }
+    
+    
 }
 setInterval(morph, 6000);
 }
 
+const death = () => {
+        $('#idle').attr('src', "dying_bison.gif");
+        setTimeout(() => {
+        $('#idle').attr('src', "dead_bison.jpg");
+    }, 7000)
+    }
+        
 
-
-
+    
+    
 $(document).on('click', ".feed", function(){
-    tatanka.hunger--;
+    tatanka.hunger-=5;
     //console.log(`click worked ${tatanka.hunger}`);
     
 })
