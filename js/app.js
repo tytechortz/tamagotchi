@@ -18,32 +18,51 @@ const $body = $('body');
 const $section = $('<section/>').prepend('<IMG SRC="idle_bison.gif"></IMG>');
 $body.append($section);
 
-
-
 $("#1").remove();
 
-};
 let time = 0;
-
 function countUp() {
-    console.log(time++);
+    time++;
+    $(".age").html("");
+    $(".age").append(time);
+    $(".hunger").html("");
+    $(".hunger").append((time / 10) + tatanka.hunger)
+    $(".boredom").html("");
+    $(".boredom").append((time / 20) + tatanka.boredom);
+    $(".sleepiness").html("");
+    $(".sleepiness").append((time / 50) + tatanka.sleepiness);
+        
+    
 }
 setInterval(countUp, 1000);
 
+
+};
+
 $(document).on('click', ".feed", function(){
-    tatanka.hunger++;
+    tatanka.hunger--;
     console.log(`click worked ${tatanka.hunger}`);
-    $('.hunger').append(tatanka.hunger);
+    $(".hunger").html("");
+    $(".hunger").append(tatanka.hunger);
+    $(".boredom").html("");
+    $(".boredom").append(tatanka.hunger);
+    $(".sleepiness").html("");
+    $(".sleepiness").append(tatanka.hunger);
+
 })
 
+
+
+
+
 $(document).on('click', ".rest", function(){
-    tatanka.sleepiness++;
+    tatanka.sleepiness--;
     console.log(`click worked ${tatanka.sleepiness}`);
     $('.sleepiness').append(tatanka.sleepiness);
 })
 
 $(document).on('click', ".play", function(){
-    tatanka.boredom++;
+    tatanka.boredom--;
     console.log(`click worked ${tatanka.boredom}`);
     $('.boredom').append(tatanka.boredom);
 })
