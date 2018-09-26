@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.js"></script>
-    <script src=>"https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"</script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
 </head>
 <body>
 
@@ -19,10 +18,33 @@
     <!-- <input type="text">
     <button id = "nameBison()">Name the Bison</button> -->
     
-    <!-- <button type="button" id="feed">FEED</button>
-    <button type="button" id="sleep">SLEEP</button>
-    <button type="button" id="play">PLAY</button>  -->
- 
+    <div id="col-1">
+            <button class="feed">Feed Me!</button>
+            <button class="play">Play!</button>
+            <button class="rest">Rest!</button>
+    </div>
+
+    <div class="stats">
+        <span>Hunger = <span class="hunger"></span>
+    </div>
+
+    <div class="stats">
+        <span>Boredom = <span class="boredom"></span>
+    </div>
+
+    <div class="stats">
+        <span>Sleepiness = <span class="sleepiness"></span>
+    </div>
+
+    <div class="stats">
+        <span>Age = <span class="Age"></span>
+    </div>
+
+    <span id="minutes"></span>:<span id="seconds"></span>
+
+        
+        
+    
     
 
     <script src="js/app.js"></script>
