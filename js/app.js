@@ -1,4 +1,18 @@
+class Bison {
+    constructor() {
+        this.hunger = 1;
+        this.sleepiness = 1;
+        this.boredom = 1;
+        this.age = 1;
+    }
+    feedBison(){
+        this.hunger++;
+    }
+}
 
+// instantiate class
+
+const tatanka = new Bison();
 const $body = $('body');
 //start game button
 const startGame = () => {
@@ -36,21 +50,7 @@ $div.append($playButton);
 };
 
 
-class Bison {
-    constructor() {
-        this.hunger = 1;
-        this.sleepiness = 1;
-        this.boredom = 1;
-        this.age = 1;
-    }
-    feedBison(){
-        this.hunger++;
-    }
-}
 
-// instantiate class
-
-const tatanka = new Bison();
 
 
 
