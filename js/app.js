@@ -9,13 +9,36 @@ class Bison {
         this.boredom = 1;
         this.age = 1;
     }
-    
+ 
 }
 
+newBison = new Bison();  
+
+
+$('#nameBison').on('click', (e) => {
+        const $nameInput = $('input').val();
+        newBison.name = $nameInput;
+        $(e.currentTarget).parent().remove();
+        $('.name').text(newBison.name)
+
+        startGame();
+    
+    $("#nameBison").remove();
+
+    });
+    
+    // const createName = (inputVal) => {
+    //     $inputVal.append(createName);
+
+    //     const $div = $('<div/>').addClass('name');
+    //     const $h3 = $('<h3/>').text(inputVal + " The Bison");
+    //     $div.append($h3);
+    //     $body.append($div);
+    // }
 // instantiate class
 
-const tatanka = new Bison();
-console.log(tatanka)
+const input = new Bison();
+
 
 
 const $body = $('body');
@@ -30,41 +53,42 @@ $("#1").remove();
 const countUp = () => {
     time++;
     if (time% 1 === 0) {
-        tatanka.hunger++;
+        newBison.hunger++;
          $(".hunger").html("");
-         $(".hunger").append(tatanka.hunger);
+         $(".hunger").append(newBison.hunger);
     }
     if (time% 1 === 0) {
-        tatanka.boredom++;
+        newBison.boredom++;
         $(".boredom").html("");
-        $(".boredom").append(tatanka.boredom);
+        $(".boredom").append(newBison.boredom);
     }
     if (time% 1 === 0) {
-        tatanka.sleepiness++;
+        newBison.sleepiness++;
         $(".sleepiness").html("");
-        $(".sleepiness").append(tatanka.sleepiness);
+        $(".sleepiness").append(newBison.sleepiness);
     }
     if (time%2 === 0) {
-        tatanka.age++;
+        newBison.age++;
         $(".age").html("");
-        $(".age").append(tatanka.age);
+        $(".age").append(newBison.age);
     }
-    if(tatanka.tiredness > 30 || tatanka.hunger > 30 || tatanka.boredom > 30) {
+    if(newBison.tiredness > 30 || newBison.hunger > 30 || newBison.boredom > 30) {
         death();    
         } else {
             console.log("STILL ALIVE")
         }
 }
-setInterval(countUp, 1000);
+setInterval(countUp, 3000);
+
        
 const morph = () => {
-    if(tatanka.tiredness <= 10 && tatanka.hunger <= 10 && tatanka.boredom <= 10) {
+    if(newBison.tiredness <= 10 && newBison.hunger <= 10 && newBison.boredom <= 10) {
         $('#idle').attr('src', "running_bison.gif")
     }
-    if(tatanka.tiredness > 10 || tatanka.hunger > 10 || tatanka.boredom > 10)  {
+    if(newBison.tiredness > 10 || newBison.hunger > 10 || newBison.boredom > 10)  {
         $('#idle').attr('src', "walking_bison.gif");
     }
-    if(tatanka.tiredness > 20 || tatanka.hunger > 20 || tatanka.boredom > 20)  {
+    if(newBison.tiredness > 20 || newBison.hunger > 20 || newBison.boredom > 20)  {
         $('#idle').attr('src', "idle_bison.gif");
     }
     
@@ -78,26 +102,26 @@ const death = () => {
         setTimeout(() => {
         $('#idle').attr('src', "dead_bison.jpg");
     }, 7000)
-    }
+}
         
 
     
     
 $(document).on('click', ".feed", function(){
-    tatanka.hunger-=5;
+    newBison.hunger-=5;
     //console.log(`click worked ${tatanka.hunger}`);
     
 })
 
 $(document).on('click', ".rest", function(){
-    tatanka.sleepiness--;
+    newBison.sleepiness--;
     //console.log(`click worked ${tatanka.sleepiness}`);
     //$('.sleepiness').append(tatanka.sleepiness);
     
 })
 
 $(document).on('click', ".play", function(){
-    tatanka.boredom--;
+    newBison.boredom--;
     //console.log(`click worked ${tatanka.boredom}`);
     //$('.boredom').append(tatanka.boredom);
     

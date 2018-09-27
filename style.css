@@ -1,4 +1,61 @@
-body {
-    background-image: url(../tamagotchi/grand_teton_national_park.jpg);
-    background-repeat: no-repeat;
-}
+#start {
+    color: white;
+    margin: auto;
+    width: 50%
+ }
+ 
+ #display {
+     position: relative;
+     bottom: 20px;
+     font-size: 20px;
+     font-family: cursive;
+     color: white;
+     margin: 0 auto;
+     clear: left;
+     z-index: 0;
+     text-align: center;
+ }
+ 
+ html { 
+     background: rgb(56, 55, 55)
+ }
+ 
+ #vitals {
+     margin: 0 auto;
+     position: relative;
+     clear: left;
+     height: auto;
+     z-index: 0;
+     text-align: center;
+    
+ 
+ }
+ 
+ .stats {
+       font: bolder;
+       color: white;
+       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+       font-size: 20px;
+ }
+ 
+ 
+ #idle {
+     margin: 0 auto;
+     height: auto;
+     width: 500px;
+     background: black;
+     color: white;
+   }
+ 
+ /* html, body {height: 100%; width: 100%;}
+ body {
+       background-image: url(../tamagotchi_2/tree_1__png_with_transparency__by_bupaje-d65ctod.png);
+       background-repeat: repeat-x;
+   } */
+ 
+ #animate {
+     position: relative;
+     
+     width: 300px;
+     height: 300px;
+ }
