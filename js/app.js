@@ -47,12 +47,12 @@ const countUp = () => {
          $(".hunger").html("");
          $(".hunger").append(newBison.hunger);
     }
-    if (time% 1 === 0) {
+    if (time% 2 === 0) {
         newBison.boredom++;
         $(".boredom").html("");
         $(".boredom").append(newBison.boredom);
     }
-    if (time% 1 === 0) {
+    if (time% 1.5 === 0) {
         newBison.sleepiness++;
         $(".sleepiness").html("");
         $(".sleepiness").append(newBison.sleepiness);
@@ -92,26 +92,30 @@ const morph = () => {
     if(newBison.tiredness < 10 && newBison.hunger < 10 && newBison.boredom < 10) {
         $('#animate').attr('src', "running_bison.gif")
     }
-    if(newBison.tiredness > 10 || newBison.hunger > 10 || newBison.boredom > 10)  {
+    if(newBison.tiredness > 10 || newBison.hunger > 10 || newBison.boredom > 10) {
         $('#animate').attr('src', "walking_bison.gif");
     }
-    if(newBison.tiredness > 20 || newBison.hunger > 20 || newBison.boredom > 20)  {
+    if(newBison.tiredness > 20 || newBison.hunger > 20 || newBison.boredom > 20) {
         $('#run').append().attr('src', "idle_bison.gif");
         $('#animate').attr('src', "idle_bison.gif");
     } 
     if(newBison.tiredness > 30 || newBison.hunger > 30 || newBison.boredom > 30) {
         $('#animate').attr('src', "dead_bison.jpg");
-       
+       death();
     } 
-}
 
+}
 setInterval(morph, 6000);
 }
 
 const death = () => {
-        $('#animate').attr('src', "dead_bison.jpg");      
-}
-     
+        $('#animate').attr('src', "dead_bison.jpg"); 
+        setTimeout( ()=> {
+            if (confirm("Retry?")) {
+                document.location.reload();
+            }
+        }, 10000)
+    }
   
 $(document).on('click', ".feed", function(){
     newBison.hunger-=5;   
