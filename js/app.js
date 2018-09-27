@@ -19,6 +19,7 @@ $('#nameBison').on('click', (e) => {
         const $nameInput = $('input').val();
         newBison.name = $nameInput;
         $(e.currentTarget).parent().remove();
+        $('body').append(`<div id="display"><h2>${newBison.name} the Bison </h2></div>`);
         $('.name').text(newBison.name)
 
         startGame();
@@ -26,17 +27,6 @@ $('#nameBison').on('click', (e) => {
     $("#nameBison").remove();
 
     });
-    
-    // const createName = (inputVal) => {
-    //     $inputVal.append(createName);
-
-    //     const $div = $('<div/>').addClass('name');
-    //     const $h3 = $('<h3/>').text(inputVal + " The Bison");
-    //     $div.append($h3);
-    //     $body.append($div);
-    // }
-// instantiate class
-
 const input = new Bison();
 
 
@@ -72,62 +62,68 @@ const countUp = () => {
         $(".age").html("");
         $(".age").append(newBison.age);
     }
-    if(newBison.tiredness > 30 || newBison.hunger > 30 || newBison.boredom > 30) {
-        death();    
-        } else {
-            console.log("STILL ALIVE")
-        }
+    
 }
-setInterval(countUp, 3000);
+setInterval(countUp, 2000);
 
        
 const morph = () => {
-    if(newBison.tiredness <= 10 && newBison.hunger <= 10 && newBison.boredom <= 10) {
-        $('#idle').attr('src', "running_bison.gif")
+
+    $(document).ready(function(e) {
+        var width = $(document).width();
+    
+        function goRight() {
+            $("#animate").animate({
+            left: width
+          }, 5000, function() {
+             setTimeout(goLeft, 50);
+          });
+        }
+        function goLeft() {
+            $("#animate").animate({
+            left: 0
+          }, 5000, function() {
+             setTimeout(goRight, 50);
+          });
+        }
+    
+        setTimeout(goRight, 50);
+    });
+    if(newBison.tiredness < 10 && newBison.hunger < 10 && newBison.boredom < 10) {
+        $('#animate').attr('src', "running_bison.gif")
     }
     if(newBison.tiredness > 10 || newBison.hunger > 10 || newBison.boredom > 10)  {
-        $('#idle').attr('src', "walking_bison.gif");
+        $('#animate').attr('src', "walking_bison.gif");
     }
     if(newBison.tiredness > 20 || newBison.hunger > 20 || newBison.boredom > 20)  {
-        $('#idle').attr('src', "idle_bison.gif");
-    }
-    
-    
+        $('#run').append().attr('src', "idle_bison.gif");
+        $('#animate').attr('src', "idle_bison.gif");
+    } 
+    if(newBison.tiredness > 30 || newBison.hunger > 30 || newBison.boredom > 30) {
+        $('#animate').attr('src', "dead_bison.jpg");
+       
+    } 
 }
+
 setInterval(morph, 6000);
 }
 
 const death = () => {
-        $('#idle').attr('src', "dying_bison.gif");
-        setTimeout(() => {
-        $('#idle').attr('src', "dead_bison.jpg");
-    }, 7000)
+        $('#animate').attr('src', "dead_bison.jpg");      
 }
-        
-
-    
-    
+     
+  
 $(document).on('click', ".feed", function(){
-    newBison.hunger-=5;
-    //console.log(`click worked ${tatanka.hunger}`);
-    
+    newBison.hunger-=5;   
 })
 
 $(document).on('click', ".rest", function(){
-    newBison.sleepiness--;
-    //console.log(`click worked ${tatanka.sleepiness}`);
-    //$('.sleepiness').append(tatanka.sleepiness);
-    
+    newBison.sleepiness-=5;  
 })
 
 $(document).on('click', ".play", function(){
-    newBison.boredom--;
-    //console.log(`click worked ${tatanka.boredom}`);
-    //$('.boredom').append(tatanka.boredom);
-    
+    newBison.boredom-=5;
 })
-
-
 
 $(() => {
     $('#1').on('click', startGame);
@@ -136,68 +132,3 @@ $(() => {
 
 
 
-//loops through object and makes a span with class for each vital stat element
-// for( var key in tatanka) {
-//     const $span = $("<span/>").attr('class', key).text(key + " = " + tatanka[key]);
-//     const $div = $("<div/>").attr("class", "stats");
-//     $div.append($span);
-//     $body.append($div);
-//}
-//removes start button
-
-// // instantiate classx
-
-// let tatanka = new Bison();
-// //const $body = $('body');
-// //start game button
-// const startGame = () => {
-
-// //adds starting bison picture
-// const $body = $('body');
-// const $section = $('<section/>').prepend('<IMG SRC="idle_bison.gif"></IMG>');
-// $body.append($section);
-
-// //loops through object and makes a span with class for each vital stat element
-// for( var key in tatanka) {
-//     const $span = $("<span/>").attr('class', key).text(key + " = " + tatanka[key]);
-//     const $div = $("<div/>").attr('class');
-//     $article.append($span);
-//     $body.append($article);
-// }
-// //removes start button
-// $("#1").remove();
-
-// //create div for buttons
-// const $div = $('<div/>');
-// $body.append($div);
-
-
-
-// const $sleepButton = $('<button>/').text('Let the Bison Chill');
-// $div.append($sleepButton);
-
-// const $playButton = $('<button>/').text('Let the Bison Play');
-// $div.append($playButton);
-
-// };
-
-// $(() => {
-//     $('#1').on('click', startGame);
-// });
-
-//  $('button').on('click', () => {
-//         const $input = $('input').val();
-//         console.log($input);
-//         createName($input);
-    
-//     $("#nameBison").remove();
-//     });
-    
-    // const createName = (inputVal) => {
-    //     .Bison.name.append(createName);
-
-    //     // const $div = $('<div/>').addClass('name');
-    //     // const $h3 = $('<h3/>').text(inputVal + " The Bison");
-    //     // $div.append($h3);
-    //     // $body.append($div);
-    // }
